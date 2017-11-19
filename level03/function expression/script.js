@@ -57,3 +57,51 @@ function closeTerminal(message){
 // otherwise we will get new customer alert
 
 // using function expressions with array and map()
+var numbers = [12, 4, 3, 9, 8, 6, 10, 1];
+var results = numbers.map('some coolFunction goes here');
+// map woorks like a loop that applies a function to each array index
+
+var results = [];
+for(var i = -0; i < numbers.length; i++){
+	results[i] = coolfunction(numbers[i]);
+}
+
+// pass in function
+var numbers = [12, 4, 3, 9, 8, 6, 10, 1];
+
+var results = numbers.map(function(arrayCell){
+	return arrayCell * 2;
+});
+
+// Returning functions and Immediate Invocation
+
+// since functions can be treated as expressions, the can also be returned like values!
+var parkRides = [
+	["Birch Bumpers", 40],
+	["Pines Plunge", 55],
+	["Cedar Coaster", 20],
+	["Ferris Wheel of Firs", 90]
+];
+var fastPassQueue = ["Cedar Coaster", "Pines Plunge", "Birch Bumpers", "Pines Plunge"];
+
+function buildTicket(allRides, passRides, pick){
+	if(passRides[0] == pick){
+		var pass = passRides.shift();
+		return function(){
+			alert("Quick! You've got a fast pass to " + pass + "!");
+		};
+	} else {
+		for(var i = 0; i < allRides.length; i++){
+			if(allRides[i][0] == pick){
+				return function(){
+					alert("A ticket is printing for " + pick + "!\n" + "Your wait time is about " + allRides[i][1]+ " minutes.");
+				};
+			}
+		}
+	}
+}
+
+// Using an immidiately-invoked function
+var wantsRide = "Pine Plunge";
+// semicolon gives the instruction to execute the function!
+buildTicket(parkRides, fastPassQueue, wantsRide)();
