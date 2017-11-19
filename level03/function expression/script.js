@@ -34,3 +34,26 @@ function closeTerminal(message){
 }
 
 closeTerminal(greeting);	// alert(blablabla)
+
+// function expressions can give flexibility in choosing which functionality to build
+var greeting;
+	// some sets newCustomer to true or false...
+if(newCustomer){
+	greeting = function(){
+		alert("Hello new customer");
+	};
+} else {
+	greeting = function(){
+		alert("Hello old customer");
+	};
+}
+
+
+closeTerminal(greeting);
+function closeTerminal(message){
+	message();
+}
+// if newCustomer = false we will get old customer alert
+// otherwise we will get new customer alert
+
+// using function expressions with array and map()
