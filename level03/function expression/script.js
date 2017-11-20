@@ -85,14 +85,21 @@ var parkRides = [
 var fastPassQueue = ["Cedar Coaster", "Pines Plunge", "Birch Bumpers", "Pines Plunge"];
 
 function buildTicket(allRides, passRides, pick){
+	// if the next available FP is for the ride that the customer seeks, we'll give them that pass
 	if(passRides[0] == pick){
+		// store first cell of the array
 		var pass = passRides.shift();
+		// return function expression with alert
 		return function(){
 			alert("Quick! You've got a fast pass to " + pass + "!");
 		};
 	} else {
+		// search for the ride the customer wants
+		// loop over the entire array
 		for(var i = 0; i < allRides.length; i++){
+			// match the ride names with the first index of each subarray([0])
 			if(allRides[i][0] == pick){
+				// return function expression with alert
 				return function(){
 					alert("A ticket is printing for " + pick + "!\n" + "Your wait time is about " + allRides[i][1]+ " minutes.");
 				};
